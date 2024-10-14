@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ariton - SuperApp for Communities</title>
+    <meta
+      name="description"
+      content="Ariton is a decentralized platform for building and managing communities, offering tools for communication, marketplace, and more."
+    />
+    <meta
+      name="keywords"
+      content="Ariton, communities, decentralized, superapp, blockchain, AI"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/png" href="assets/ariton-favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="app.css" /> -->
+    <meta property="og:title" content="Ariton" />
+    <meta
+      property="og:description"
+      content="Freedom to Connect, Power to Own"
+    />
+    <meta
+      property="og:image"
+      content="https://ariton.app/assets/ariton-social.png"
+    />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:type" content="object" />
+    <meta property="og:url" content="https://ariton.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ariton - SuperApp for Communities" />
+    <meta
+      name="twitter:image"
+      content="https://ariton.app/assets/ariton-social-x.png"
+    />
+
+    <style>
+      :root {
+        --background-color: rgb(255, 255, 255);
+        --text-color: #000000;
+        --logo-image: url("assets/ariton-icon-dark-stripped.svg");
+        --logo-text: url("assets/ariton-text-dark.svg");
+        --header-border: rgb(229, 229, 229);
+
+        --section-background-color: rgb(245, 245, 245);
+        --section-text-color: rgb(75, 85, 99);
+
+        --button-background-color: rgb(23, 23, 23);
+        --button-background-hover: rgb(41, 41, 41);
+        --button-text-color: rgb(250, 250, 250);
+
+        --colorAnimation0: #d32f2f;
+        --colorAnimation25: #1976d2;
+        --colorAnimation50: #388e3c;
+        --colorAnimation75: #f57c00;
+        --colorAnimation100: #d32f2f;
+
+        --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        --box-shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      [data-theme="dark"] {
+        --background-color: rgb(13, 12, 12);
+        --text-color: #ffffff;
+        --logo-image: url("assets/ariton-icon-light-stripped.svg");
+        --logo-text: url("assets/ariton-text-light.svg");
+        --header-border: rgb(38, 38, 38);
+        --section-background-color: rgb(23, 23, 23);
+        --section-text-color: rgb(250, 250, 250);
+        --button-background-color: rgb(250, 250, 250);
+        --button-background-hover: rgb(199, 199, 199);
+        --button-text-color: rgb(23, 23, 23);
+
+        --colorAnimation0: #ff5252;
+        --colorAnimation25: #448aff;
+        --colorAnimation50: #69f0ae;
+        --colorAnimation75: #ffab40;
+        --colorAnimation100: #ff5252;
+
+        --box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+        --box-shadow-hover: 0 12px 24px rgba(255, 255, 255, 0.4);
+      }
+
+      html,
+      body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 18px;
+
+        transition: background-color 0.4s, color 0.4s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-size: 18px;
+      }
+
+      a {
+        color: var(--text-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a.menu-link:hover {
+        text-decoration: none;
+      }
+
+      a.menu-link::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        display: block;
+        margin-top: 5px;
+        right: 0;
+        background: currentColor;
+        transition: width 0.3s ease;
+        -webkit-transition: width 0.3s ease;
+      }
+
+      a.menu-link:hover::after {
+        width: 100%;
+        left: 0;
+        background: currentColor;
+      }
+
+      @keyframes pulsate {
+        0% {
+          box-shadow: var(--box-shadow);
+        }
+        50% {
+          box-shadow: var(--box-shadow-hover);
+        }
+        100% {
+          box-shadow: var(--box-shadow);
+        }
+      }
+
+      .hero-container {
+        display: flex;
+        gap: 2em;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        align-content: center;
+        justify-items: center;
+        justify-self: center;
+      }
+
+      .hero-container > *:first-child {
+        flex: 6;
+      }
+
+      .hero-container > *:last-child {
+        flex: 4;
+        text-align: center;
+      }
+
+      .hero {
+        text-align: center;
+        min-height: 400px;
+        height: calc(100vh - 80px - 80px);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 80px;
+        color: var(--section-text-color);
+      }
+
+      .hero-image {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 80px;
+        color: var(--section-text-color);
+        
+      }
+
+      .larger {
+        font-size: 1.4em;
+      }
+
+      .centered {
+        text-align: center;
+      }
+
+      .ariton-logo-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-right: 3em;
+      }
+
+      .ariton-logo {
+        background-image: var(--logo-image);
+        background-repeat: no-repeat;
+        background-position: left center;
+        width: 42px;
+        height: 42px;
+        margin-right: 0.4em;
+      }
+
+      .ariton-text {
+        background-image: var(--logo-text);
+        background-repeat: no-repeat;
+        background-position: left center;
+        width: 100px;
+        height: 50px;
+      }
+
+      .ariton-logo-footer {
+        background-image: var(--logo-image);
+        background-repeat: no-repeat;
+        background-position: left center;
+        width: 96px;
+        height: 96px;
+        margin-right: 1em;
+      }
+
+      button {
+        background-color: var(--button-background-color);
+        color: var(--button-text-color);
+        /* border: 2px solid var(--header-border); */
+        border: 0;
+        border-radius: 25px;
+        padding: 16px 32px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        /* color: var(--text-color); */
+        background-color: var(--button-background-hover);
+        transition: background-color 0.4s;
+      }
+
+      .light-button {
+        color: var(--text-color);
+        background-color: transparent;
+      }
+
+      .light-button:hover {
+        color: var(--text-color);
+        background-color: var(--header-border);
+        transition: background-color 0.8s;
+      }
+
+      .download-container button {
+        margin-left: 3em;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        color: var(--header-text);
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+        z-index: 1000;
+        transition: background-color 0.4s, color 0.4s;
+        justify-content: center;
+        border-bottom: 1px solid var(--header-border);
+      }
+
+      footer {
+        border-top: 1px solid var(--header-border);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .footer-container {
+        display: flex;
+        max-width: 960px;
+        padding: 2em 2em;
+        gap: 1em;
+        width: 100%;
+      }
+
+      .footer-container > div {
+        flex-grow: 1;
+      }
+
+      .footer-container > div:first-child {
+        flex-grow: 3;
+      }
+
+      .footer-container strong {
+        margin-bottom: 1em;
+        display: block;
+      }
+
+      .footer-container a {
+        margin-bottom: 0.3em;
+        display: block;
+      }
+
+      .download-container {
+        display: flex;
+        border-top: 1px solid var(--header-border);
+        max-width: 960px;
+        padding: 2em;
+        box-sizing: border-box;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+      }
+
+      .header-container {
+        max-width: 960px;
+        display: flex;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      nav li {
+        margin-right: 20px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--header-text);
+        font-weight: bold;
+      }
+
+      .theme-toggle {
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: var(--header-text);
+        cursor: pointer;
+      }
+
+      main {
+        margin-top: 80px;
+        padding: 20px;
+        max-width: 960px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 2.4em;
+        margin-bottom: 50px;
+        /* animation: colorChange 5s infinite; */
+        font-weight: 600;
+      }
+      
+      .headline {
+          display: inline-block;
+          background: radial-gradient(circle at top left, #0a9ff2 0%, #6964f9 18.82%, #d950fb 32.6%, #f159c6 52.83%, #ff5091 68.03%, #ff6659 87.66%, #ff8a20 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+
+
+      .h1-section {
+        font-size: 4em;
+        margin-bottom: 6px;
+      }
+
+      .h1-subtitle {
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        font-weight: 500;
+      }
+
+      .warn {
+        color: #c23667;
+      }
+
+      section,
+      .section-left,
+      .section-right {
+        margin-bottom: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        background-color: var(--section-background-color);
+        color: var(--section-text-color);
+        width: 100%;
+        align-items: center;
+      }
+
+      #learn,
+      #help,
+      #features, 
+      #pricing {
+        scroll-margin-top: 100px;
+      }
+
+      section > div {
+        width: 50%;
+      }
+
+      .section-text {
+        padding: 2em;
+      }
+
+      .section-left {
+        border-radius: 6px;
+        /* flex-wrap: wrap-reverse; */
+      }
+
+      .section-right {
+        border-radius: 6px;
+        flex-direction: row-reverse;
+      }
+
+      .section-image {
+        padding: 2em;
+        box-sizing: border-box;
+              width: 50%;
+              /* height: 300px; */
+              /* background-size: 80%; */
+              /* background-repeat: no-repeat; */
+              /* background-position: center; */
+              border-radius: 6px;
+            }
+
+      .section-img {
+        width: 100%; 
+        /* overflow-clip-margin: content-box; 
+        overflow: clip; 
+        aspect-ratio: auto 871 / 857; */
+      }
+
+      .dark-theme-only {
+        display: none;
+      }
+
+      body.dark-theme .dark-theme-only {
+        display: block;
+      }
+
+      .light-theme-only {
+        display: none;
+      }
+
+      body.light-theme .light-theme-only {
+        display: block;
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .bitcoin-tip {
+        margin-bottom: 0.2em;
+      }
+
+      .hero-screenshot {
+        width: 100%;
+        border-radius: 4px;
+        transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) rotate(-4deg);
+        box-shadow: var(--box-shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* animation: pulsate 6s infinite; */
+      }
+      
+      .hero-screenshot:hover {
+        transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) rotate(-1deg) scale(1.7) translateX(-100px);
+        box-shadow: var(--box-shadow-hover)
+      }
+
+      .screenshot-light {}
+
+      .screenshot-dark {
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .hero-container {
+          font-size: 0.8em;
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          justify-items: center;
+        }
+      }
+
+      @media only screen and (max-width: 765px) {
+        .hero-container {
+          flex-direction: column;
+        }
+
+        .hero-screenshot {
+          width: 80%;
+        }
+
+        .hero-screenshot:hover {
+          transform: skew(0deg) rotate(-1deg) scale(1.25);
+        }
+
+        .hero-image {
+          display: inline-block;
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        body {
+          font-size: 14px;
+        }
+
+        section > div {
+          width: 100%;
+        }
+
+        .section-image {
+          width: 100%;
+        }
+
+        .footer-container {
+          display: flex;
+          max-width: 960px;
+          padding: 2em 2em;
+          gap: 1em;
+          width: 100%;
+          flex-direction: column;
+        }
+
+        .section-left {
+          border-radius: 6px;
+          flex-direction: row;
+        }
+
+        .section-right {
+          border-radius: 6px;
+          flex-direction: row;
+        }
+
+        .hide-small {
+          display: none;
+        }
+
+        /* header {
+          padding: 7px 10px;
+        }
+
+        main {
+          padding: 5px;
+        }
+
+        h1 {
+          font-size: 1.4em;
+        } */
+      }
+
+      @media only screen and (max-width: 400px) {
+        .hide-tiny {
+          display: none;
+        }
+
+        header {
+          padding: 7px 10px;
+        }
+
+        main {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 1.8em;
+        }
+      }
+
+
+    .topic-container {
+      max-width: 600px;
+      display: flex;
+      flex-wrap: wrap; /* Allows items to wrap to the next line */
+    }
+    
+    .topic {
+      flex: 1 1 50%; /* Each item will take up 50% of the container's width */
+      box-sizing: border-box; /* Ensures padding and border are included in the width */
+      padding: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <nav>
+          <ul>
+            <li>
+              <a href="#top">
+                <div class="ariton-logo-container">
+                  <div class="ariton-logo" alt="Ariton logo"></div>
+                  <div class="ariton-text" alt="Ariton logo"></div>
+                </div>
+              </a>
+            </li>
+
+            <li class="hide-small"><a class="menu-link" href="#help">Help Center</a></li>
+            <li class="hide-tiny"><a class="menu-link" href="https://ariton.app">Back to Ariton.app</a></li>
+            <li>
+              <a
+                href="#"
+                onclick="event.preventDefault();"
+                class="theme-toggle"
+              >
+                <svg width="30" height="30" id="light-icon">
+                  <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                  <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                  ></line>
+
+                  <use href="#ray" transform="rotate(45 15 15)" />
+                  <use href="#ray" transform="rotate(90 15 15)" />
+                  <use href="#ray" transform="rotate(135 15 15)" />
+                  <use href="#ray" transform="rotate(180 15 15)" />
+                  <use href="#ray" transform="rotate(225 15 15)" />
+                  <use href="#ray" transform="rotate(270 15 15)" />
+                  <use href="#ray" transform="rotate(315 15 15)" />
+                </svg>
+                <svg width="30" height="30" id="dark-icon">
+                  <path
+                    fill="currentColor"
+                    d="
+                  M 23, 5
+                  A 12 12 0 1 0 23, 25
+                  A 12 12 0 0 1 23, 5"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+
+        <h1 class="headline" id="help">Welcome. How can we help?</h1>
+
+        <!-- <input type="text"> -->
+
+        <h3>Communities</h3>
+        <div class="topic-container">
+        <div class="topic">
+            <h4>How to create a community</h4>
+            <p>Here are the steps you need to follow to create a community</p>
+        </div>
+        <div class="topic">
+            <h4>How to create a community</h4>
+            <p>Here are the steps you need to follow to create a community</p>
+        </div>
+        <div class="topic">
+            <h4>How to create a community</h4>
+            <p>Here are the steps you need to follow to create a community</p>
+        </div>
+        <div class="topic">
+            <h4>How to create a community</h4>
+            <p>Here are the steps you need to follow to create a community</p>
+        </div>
+        </div>
+
+        <h3>Friends</h3>
+        <div class="topic-container">
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            </div>
+
+        <h3>Chat</h3>
+        <div class="topic-container">
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            <div class="topic">
+                <h4>How to create a community</h4>
+                <p>Here are the steps you need to follow to create a community</p>
+            </div>
+            </div>
+    </main>
+
+    <!-- <footer>
+      <div class="footer-container">
+        <div class="">
+          <div class="ariton-logo-footer" alt="Ariton logo"></div>
+        </div>
+        <div>
+          <strong>Product</strong>
+          <a href="#learn">Learn more</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="https://help.ariton.app">Help</a>
+          <a href="https://status.ariton.app">Status</a>
+          <a href="https://github.com/block-core/ariton" target="_blank"
+            >Source Code</a
+          >
+        </div>
+        <div>
+          <strong>Company</strong>
+          <a href="old.html">About</a>
+          <a href="funding.html">Funding</a>
+          <a>Branding</a>
+        </div>
+
+        <div>
+          <strong>Policies</strong>
+          <a>Privacy Policy</a>
+          <a>Terms and Conditions</a>
+        </div>
+      </div>
+    </footer> -->
+
+    <div class="download-container">
+        <div class="ariton-logo-footer" alt="Ariton logo"></div>
+      Crafted with ❤️ by Ariton team
+      <a href="https://alpha.ariton.app">
+        <button>Open Ariton</button>
+      </a>
+    </div>
+
+    <script>
+      const lightIcon = document.getElementById("light-icon");
+      const darkIcon = document.getElementById("dark-icon");
+
+      const toggleButton = document.querySelector(".theme-toggle");
+      const screenshotLight = document.querySelector(".screenshot-light");
+      const screenshotDark = document.querySelector(".screenshot-dark");
+
+      const htmlElement = document.documentElement;
+
+      toggleButton.addEventListener("click", () => {
+        if (htmlElement.getAttribute("data-theme") === "dark") {
+          htmlElement.removeAttribute("data-theme");
+          htmlElement.style.setProperty("color-scheme", "light");
+
+          lightIcon.setAttribute("display", "inline-block");
+          darkIcon.setAttribute("display", "none");
+
+          screenshotLight.classList.remove("hidden");
+          screenshotDark.classList.add("hidden");
+
+        } else {
+          htmlElement.setAttribute("data-theme", "dark");
+          htmlElement.style.setProperty("color-scheme", "dark");
+
+          lightIcon.setAttribute("display", "none");
+          darkIcon.setAttribute("display", "inline-block");
+
+          screenshotLight.classList.add("hidden");
+          screenshotDark.classList.remove("hidden");
+        }
+      });
+
+      const darkModeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      );
+      let darkMode = darkModeMediaQuery.matches;
+
+      // console.log("DARK MODE?", darkMode);
+
+      darkIcon.setAttribute("display", "none");
+    </script>
+  </body>
+</html>
