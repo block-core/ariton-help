@@ -23,6 +23,6 @@ jobs:
         run: npm ci
 
       - name: Deploy to GitHub Pages
-        run: ng deploy
+        run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
