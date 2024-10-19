@@ -585,10 +585,21 @@ body.light-theme .light-theme-only {
   max-width: 600px;
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 1em;
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
 .topic {
-  flex: 1 1 50%; /* Each item will take up 50% of the container's width */
+  flex: 1 1 calc(50% - 0.5em); /* Adjusted to account for the gap */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
   padding: 10px;
+  background-color: var(--section-background-color);
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+.topic:hover {
+  border: 2px solid var(--section-background-color);
+  cursor: pointer;
+  background-color: var(--hover-background-color); /* Change background color on hover */
 }
