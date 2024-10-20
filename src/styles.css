@@ -527,6 +527,7 @@ body.light-theme .light-theme-only {
 .help-body {
   border-top: 1px solid var(--header-border);
   padding-top: 1em;
+  white-space: pre-wrap;
 }
 
 @media only screen and (max-width: 1024px) {
