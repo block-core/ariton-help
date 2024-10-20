@@ -1,4 +1,6 @@
 .chips {
+    width: 100%;
+    margin: 1em 0;
 }
 
 .chip {
@@ -6,4 +8,5 @@
   padding: 0.4em 1em;
   border-radius: 14px;
   font-size: 0.8em;
+  margin-right: 0.1em;
 }

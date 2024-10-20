@@ -494,6 +494,10 @@ body.light-theme .light-theme-only {
   box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
+.topic-view {
+  max-width: 600px;
+}
+
 .topic {
   flex: 1 1 calc(50% - 0.5em); /* Adjusted to account for the gap */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
@@ -524,8 +528,6 @@ body.light-theme .light-theme-only {
   border-top: 1px solid var(--header-border);
   padding-top: 1em;
 }
-
-
 
 @media only screen and (max-width: 1024px) {
   .hero-container {
