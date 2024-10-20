@@ -61,20 +61,6 @@
 
   <router-outlet />
 
-  <!-- {{ groups | json }} -->
-  @if(loading) {
-  <h3 class="loading">Loading... please wait...</h3>
-  } @else { @for(group of groups | keyvalue; track group.key) {
-  <h3>{{ group.key }}</h3>
-  <div class="topic-container">
-    @for(entry of group.value; track entry) {
-    <div class="topic">
-      <h4>{{ entry.data.title }}</h4>
-      <div [innerHTML]="sanitizeHtml(entry.data.body)"></div>
-    </div>
-    }
-  </div>
-  } }
 </main>
 
 <div class="download-container">

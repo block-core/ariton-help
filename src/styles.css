@@ -596,10 +596,21 @@ body.light-theme .light-theme-only {
   background-color: var(--section-background-color);
   border: 2px solid transparent;
   border-radius: 10px;
+  display: inline-block;
 }
 
 .topic:hover {
   border: 2px solid var(--section-background-color);
   cursor: pointer;
-  background-color: var(--hover-background-color); /* Change background color on hover */
+  background-color: var(
+    --hover-background-color
+  ); /* Change background color on hover */
+}
+
+.loading {
+  min-height: 300px;
+}
+
+.help-abstract {
+  white-space: pre-wrap;
 }
