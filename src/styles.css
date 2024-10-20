@@ -236,15 +236,18 @@ button:hover {
 header {
   position: fixed;
   top: 0;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
   background-color: var(--background-color);
   color: var(--header-text);
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   padding: 15px 20px;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
   z-index: 1000;
   transition: background-color 0.4s, color 0.4s;
-  justify-content: center;
+  /* justify-content: center; */
   border-bottom: 1px solid var(--header-border);
 }
 
@@ -257,7 +260,7 @@ footer {
 
 .footer-container {
   display: flex;
-  max-width: 960px;
+  max-width: 600x;
   padding: 2em 2em;
   gap: 1em;
   width: 100%;
@@ -284,7 +287,7 @@ footer {
 .download-container {
   display: flex;
   border-top: 1px solid var(--header-border);
-  max-width: 960px;
+  max-width: 600px;
   padding: 2em;
   box-sizing: border-box;
   width: 100%;
@@ -294,7 +297,8 @@ footer {
 }
 
 .header-container {
-  max-width: 960px;
+  max-width: 600px;
+  width: 100%;
   display: flex;
 }
 
@@ -326,10 +330,11 @@ nav a {
 main {
   margin-top: 80px;
   padding: 20px;
-  max-width: 960px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -490,7 +495,7 @@ body.light-theme .light-theme-only {
   max-width: 600px;
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap to the next line */
-  gap: 1em;
+  /* gap: 1em; */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
@@ -499,7 +504,7 @@ body.light-theme .light-theme-only {
 }
 
 .topic {
-  flex: 1 1 calc(50% - 0.5em); /* Adjusted to account for the gap */
+  flex: 1 1 calc(50% - 10px); /* Adjusted to account for the gap */
   box-sizing: border-box; /* Ensures padding and border are included in the width */
   padding: 10px;
   background-color: var(--section-background-color);
@@ -507,6 +512,7 @@ body.light-theme .light-theme-only {
   border-radius: 10px;
   display: inline-block;
   text-decoration: none;
+  margin: 2px;
 }
 
 .topic:hover {
@@ -577,7 +583,7 @@ body.light-theme .light-theme-only {
 
   .footer-container {
     display: flex;
-    max-width: 960px;
+    max-width: 600px;
     padding: 2em 2em;
     gap: 1em;
     width: 100%;
