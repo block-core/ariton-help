@@ -1,11 +1,13 @@
-{{ groups | json }}
+<!-- {{ groups | json }} -->
+<h1 class="headline" id="help">Welcome. How can we help?</h1>
+
 @if(loading) {
 <h3 class="loading">Loading... please wait...</h3>
-} @else { @for(group of groups | keyvalue; track group.key) {
+} @else { @for(group of data.groups | keyvalue; track group.key) {
 <h3>{{ group.key }}</h3>
 <div class="topic-container">
   @for(entry of group.value; track entry) {
-  <a class="topic">
+  <a class="topic" [routerLink]="['/view', entry.id]">
     <h4>{{ entry.data.title }}</h4>
     <p class="help-abstract">{{ entry.data.abstract }}</p>
     <!-- <div

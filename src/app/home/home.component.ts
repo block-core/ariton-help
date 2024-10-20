@@ -1,22 +1,26 @@
 import { CommonModule, KeyValuePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, KeyValuePipe],
+  imports: [CommonModule, KeyValuePipe, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
   sanitizer = inject(DomSanitizer);
 
+  data = inject(DataService);
+
   title = 'app';
 
-  entries: any[] = [];
+  // entries: any[] = [];
 
-  groups: { [key: string]: any } = {};
+  // groups: { [key: string]: any } = {};
 
   loading = true;
 
@@ -72,18 +76,19 @@ export class HomeComponent {
             continue;
           }
 
-          if (this.groups[label] == null) {
-            this.groups[label] = [];
+          if (this.data.groups[label] == null) {
+            this.data.groups[label] = [];
           }
 
-          this.groups[label].push(entry);
+          this.data.groups[label].push(entry);
         }
       }
     }
 
     this.loading = false;
+    this.data.loaded = true;
 
-    console.log(this.groups);
+    console.log(this.data.groups);
   }
 
   sanitizeHtml(html: string): SafeHtml {
@@ -91,6 +96,10 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.load('did:dht:8qamgpthwxcqmxfb7bbj4rcuzej4qzr4em1aubr6u6s6npeq8foy');
+    if (!this.data.loaded) {
+      this.load('did:dht:8qamgpthwxcqmxfb7bbj4rcuzej4qzr4em1aubr6u6s6npeq8foy');
+    } else {
+      this.loading = false;
+    }
   }
 }

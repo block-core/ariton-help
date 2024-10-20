@@ -12,7 +12,7 @@
         </li>
 
         <li class="hide-small">
-          <a class="menu-link" href="#help">Help Center</a>
+          <a class="menu-link" [routerLink]="['/']">Help Center</a>
         </li>
         <li class="hide-tiny">
           <a class="menu-link" href="https://ariton.app">Back to Ariton.app</a>
@@ -57,10 +57,7 @@
   </div>
 </header>
 <main>
-  <h1 class="headline" id="help">Welcome. How can we help?</h1>
-
   <router-outlet />
-
 </main>
 
 <div class="download-container">

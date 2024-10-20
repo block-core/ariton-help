@@ -597,14 +597,14 @@ body.light-theme .light-theme-only {
   border: 2px solid transparent;
   border-radius: 10px;
   display: inline-block;
+  text-decoration: none;
 }
 
 .topic:hover {
+  text-decoration: none;
   border: 2px solid var(--section-background-color);
   cursor: pointer;
-  background-color: var(
-    --hover-background-color
-  ); /* Change background color on hover */
+  background-color: var(--hover-background-color);
 }
 
 .loading {
