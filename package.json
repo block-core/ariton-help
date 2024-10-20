@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4242",
     "build": "ng build",
     "deploy": "ng deploy --repo=https://github.com/block-core/ariton-help.git --cname=help.ariton.app --name=SondreB --email=sondre@outlook.com",
     "watch": "ng build --watch --configuration development",

@@ -63,65 +63,19 @@
 
   <router-outlet />
 
-  <h3>Communities</h3>
-  <div class="topic-container">
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-  </div>
+  <!-- {{ groups | json }} -->
 
-  <h3>Friends</h3>
+  @for(group of groups | keyvalue; track group.key) {
+  <h3>{{ group.key }}</h3>
   <div class="topic-container">
+    @for(entry of group.value; track entry) {
     <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
+      <h4>{{ entry.data.title }}</h4>
+      {{ entry.data.body }}
     </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
+    }
   </div>
-
-  <h3>Chat</h3>
-  <div class="topic-container">
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-    <div class="topic">
-      <h4>How to create a community</h4>
-      <p>Here are the steps you need to follow to create a community</p>
-    </div>
-  </div>
+  }
 </main>
 
 <div class="download-container">
