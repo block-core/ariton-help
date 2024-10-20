@@ -27,6 +27,8 @@ export class ViewComponent {
 
   id: string | null;
 
+  labels: string[] = [];
+
   constructor(private route: ActivatedRoute) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log('ID from route:', this.id);

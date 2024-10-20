@@ -7,7 +7,9 @@
 <div class="topic-container">
   <p>{{ entry.data.abstract }}</p>
 
-  <div class="chips"><div class="chip"></div></div>
+  @for(tag of entry.record.tags['labels']; track tag) { 
+    <div class="chips"><div class="chip">{{ tag }}</div></div>
+  }
 
   <!-- <h4>{{ entry.data.title }}</h4> -->
   <!-- <p class="help-abstract">{{ entry.data.abstract }}</p> -->

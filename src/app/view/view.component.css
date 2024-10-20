@@ -1,0 +1,9 @@
+.chips {
+}
+
+.chip {
+  background-color: var(--section-background-color);
+  padding: 0.4em 1em;
+  border-radius: 14px;
+  font-size: 0.8em;
+}

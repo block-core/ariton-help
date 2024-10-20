@@ -614,3 +614,8 @@ body.light-theme .light-theme-only {
 .help-abstract {
   white-space: pre-wrap;
 }
+
+.help-body {
+  border-top: 1px solid var(--header-border);
+  padding-top: 1em;
+}
