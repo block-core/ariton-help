@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   groups: { [key: string]: any } = {};
   loaded = false;
+  complete = false;
 
   constructor() {}
 

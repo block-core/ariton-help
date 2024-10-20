@@ -1,4 +1,3 @@
-<!-- {{ groups | json }} -->
 @if(loading) {
 <h3 class="loading">Loading... please wait...</h3>
 } @else {
@@ -9,12 +8,11 @@
 
   <div class="chips">
     @for(tag of entry.record.tags['labels']; track tag) {
-    <span class="chip">{{ tag }}</span>
+    <a [routerLink]="['/t', tag]"
+      ><span class="chip">{{ tag }}</span></a
+    >
     }
   </div>
-
-  <!-- <h4>{{ entry.data.title }}</h4> -->
-  <!-- <p class="help-abstract">{{ entry.data.abstract }}</p> -->
   <div class="help-body" [innerHTML]="sanitizeHtml(entry.data.body)"></div>
 </div>
 }

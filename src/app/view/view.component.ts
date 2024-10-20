@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-view',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './view.component.html',
   styleUrl: './view.component.css',
 })
