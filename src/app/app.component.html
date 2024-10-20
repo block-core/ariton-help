@@ -59,23 +59,22 @@
 <main>
   <h1 class="headline" id="help">Welcome. How can we help?</h1>
 
-  <!-- <input type="text"> -->
-
   <router-outlet />
 
   <!-- {{ groups | json }} -->
-
-  @for(group of groups | keyvalue; track group.key) {
+  @if(loading) {
+  <h3 class="loading">Loading... please wait...</h3>
+  } @else { @for(group of groups | keyvalue; track group.key) {
   <h3>{{ group.key }}</h3>
   <div class="topic-container">
     @for(entry of group.value; track entry) {
     <div class="topic">
       <h4>{{ entry.data.title }}</h4>
-      {{ entry.data.body }}
+      <div [innerHTML]="sanitizeHtml(entry.data.body)"></div>
     </div>
     }
   </div>
-  }
+  } }
 </main>
 
 <div class="download-container">

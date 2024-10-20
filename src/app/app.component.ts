@@ -1,7 +1,7 @@
 import { CommonModule, KeyValuePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
-// import { Web5 } from '@web5/api';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,15 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  sanitizer = inject(DomSanitizer);
+
   title = 'app';
 
   entries: any[] = [];
 
-  // groups = new Map<string, any[]>();
-
   groups: { [key: string]: any } = {};
 
-  // objectKeys = Object.keys;
+  loading = true;
 
   async load(did: string) {
     if (!did) {
@@ -44,7 +44,6 @@ export class AppComponent {
 
     const response = await web5.dwn.records.query({
       from: did,
-      // from: 'did:dht:1ko4cqh7c7i9z56r7qwucgpbra934rngc5eyffg1km5k6rc5991o',
       message: {
         filter: {
           protocol: 'https://schema.ariton.app/text',
@@ -55,13 +54,6 @@ export class AppComponent {
       },
     });
 
-    console.log('response from query', response);
-
-    // const template = document.getElementById('template');
-    // const parentElement = document.getElementById('articles');
-
-    // this.entries = [];
-
     if (response.records) {
       for (const record of response.records) {
         const data = await record.data.json();
@@ -71,8 +63,6 @@ export class AppComponent {
           data,
           id: record.id,
         };
-
-        console.log(entry);
 
         for (const label of record.tags['labels'] as []) {
           if (label == null || label == '') {
@@ -85,37 +75,14 @@ export class AppComponent {
 
           this.groups[label].push(entry);
         }
-
-        // record.tags.labels
-
-        // this.entries.push(entry);
-
-        // const clonedTemplate = template.cloneNode(true);
-
-        // // Remove a class by name from the cloned template
-        // clonedTemplate.classList.remove('hidden');
-
-        // const data = await record.data.json();
-        // console.log("data", data);
-
-        // clonedTemplate.querySelector('.img-responsive').src = data.image;
-        // clonedTemplate.querySelector('.article-link').innerText = data.title;
-        // clonedTemplate.querySelector('.article-categories').innerText = data.labels.join(', ');
-
-        // // clonedTemplate.querySelector('.img-responsive').src = record.tags.image;
-        // // clonedTemplate.querySelector('.article-link').innerText = record.tags.title;
-        // clonedTemplate.querySelector('.article-date').innerText = new Date(record.dateModified).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-
-        // // Modify the cloned template as needed
-        // // For example, if the template has a child element with class 'content', you can modify its text content
-        // // clonedTemplate.querySelector('.content').textContent = // record.data.json().content;
-
-        // // Append the cloned template to the parent element
-        // parentElement.insertBefore(clonedTemplate, parentElement.firstChild);
       }
     }
 
-    // template.classList.add('hidden');
+    this.loading = false;
+  }
+
+  sanitizeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   ngOnInit() {
@@ -158,7 +125,6 @@ export class AppComponent {
     let darkMode = darkModeMediaQuery.matches;
 
     // console.log("DARK MODE?", darkMode);
-
     darkIcon.setAttribute('display', 'none');
   }
 }
