@@ -101,7 +101,7 @@ export class HomeComponent {
 
   ngOnInit() {
     if (!this.data.complete) {
-      this.load('did:dht:8qamgpthwxcqmxfb7bbj4rcuzej4qzr4em1aubr6u6s6npeq8foy');
+      this.load('did:dht:wfcf3guhgb183rbfx5r4a5u3kh9tgjnmdp75xdphyj6wbaxxym7o');
     } else {
       this.loading = false;
     }
