@@ -38,12 +38,9 @@ export class HomeComponent {
     }
 
     const { web5, did: userDid } = await Web5.Web5.connect();
-    console.log(web5, userDid);
 
     // const urlParams = new URLSearchParams(window.location.search);
     // const did = urlParams.get('did');
-
-    console.log('From DID:', did);
 
     const response = await web5.dwn.records.query({
       from: did,
@@ -57,15 +54,11 @@ export class HomeComponent {
       },
     });
 
-    console.log('Response:', response.records);
-
     // Reset all previously loaded data.
     this.data.groups = {};
 
     if (response.records) {
       for (const record of response.records) {
-        console.log('REcord:', record);
-
         const data = await record.data.json();
 
         const entry = {
@@ -93,8 +86,6 @@ export class HomeComponent {
     this.loading = false;
     this.data.loaded = true;
     this.data.complete = true;
-
-    console.log(this.data.groups);
   }
 
   sanitizeHtml(html: string): SafeHtml {
