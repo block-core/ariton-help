@@ -74,16 +74,18 @@ export class HomeComponent {
           id: record.id,
         };
 
-        for (const label of record.tags['labels'] as []) {
-          if (label == null || label == '') {
-            continue;
-          }
+        if (record.tags) {
+          for (const label of record.tags['labels'] as []) {
+            if (label == null || label == '') {
+              continue;
+            }
 
-          if (this.data.groups[label] == null) {
-            this.data.groups[label] = [];
-          }
+            if (this.data.groups[label] == null) {
+              this.data.groups[label] = [];
+            }
 
-          this.data.groups[label].push(entry);
+            this.data.groups[label].push(entry);
+          }
         }
       }
     }

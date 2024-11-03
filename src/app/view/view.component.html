@@ -7,11 +7,12 @@
   <p>{{ entry.data.abstract }}</p>
 
   <div class="chips">
-    @for(tag of entry.record.tags['labels']; track tag) {
+    @if (entry.record.tags) { @for(tag of entry.record.tags['labels']; track
+    tag) {
     <a [routerLink]="['/t', tag]"
       ><span class="chip">{{ tag }}</span></a
     >
-    }
+    } }
   </div>
   <div class="help-body" [innerHTML]="sanitizeHtml(entry.data.body)"></div>
 </div>
